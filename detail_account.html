@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.css">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/vendors/datepicker/daterangepicker.css">
+    <link rel="stylesheet" href="assets/vendors/tags_input/bootstrap-tagsinput.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+    <title>Whatsapp Monitoring</title>
+</head>
+
+<style>
+#photos {
+   /* Prevent vertical gaps */
+   line-height: 0;
+   
+   -webkit-column-count: 5;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    5;
+   -moz-column-gap:      0px;
+   column-count:         5;
+   column-gap:           0px;
+}
+
+#photos img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 1200px) {
+  #photos {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+@media (max-width: 1000px) {
+  #photos {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
+}
+@media (max-width: 800px) {
+  #photos {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  #photos {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
+}
+
+</style>
+
+<body>
+   <!-- Header -->
+   <section style="background-color: #3B5998; height: 400px; width: 100%">
+      <nav class="navbar navbar-expand-lg static-top pt-5">
+          <div class="container">
+              <div class="row" style="margin-left: 0px;">
+                  <!-- today group -->
+                  <div class="group-count well">
+                      <h1 class="number-count">46</h1><span class="caption-number">TODAY GROUP</span>
+                  </div>
+
+                  <!-- logged account -->
+                  <div class="group-count well">
+                      <h1 class="number-count">16</h1><span class="caption-number">LOGGED ACCOUNT</span>
+                  </div>
+
+                  <!-- today topic -->
+                  <div class="group-count well">
+                      <h1 class="number-count">86</h1><span class="caption-number">TODAY TOPIC</span>
+                  </div>
+              </div>
+
+
+              <!-- logo -->
+              <a class="navbar-brand mx-auto" href="#">
+                  <img src="assets/img/logo.svg" height="28px" alt="">
+              </a>
+
+              <div>
+                  <!-- <div class="group-count well account" role="button" style="margin-right: 0;" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="mr-3"><span style="font-weight: bold;">ADMIN </span></div><img height="40"
+                src="assets/img/user.png" alt="">
+  
+            </div>
+            <div class="dropdown-menu fix-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Sign Out</a>
+            </div> -->
+                  <div class="row">
+                      <div class="col-md-2 text-center my-auto">
+                          <button class="btn btn-outline-light">
+                              <i class="fas fa-bell" style="color: white; font-size: 20px; position: absolute;"></i>
+                              <span class="badge badge-pill badge-warning"
+                                  style="font-size: 10px; margin-left: 10px; z-index: 1; position: relative;">1</span>
+                          </button>
+                      </div>
+                      <div class="col-md-2 text-center my-auto">
+                          <button class="btn btn-outline-light">
+                              <i class="far fa-question-circle" style="color: white; font-size: 22px;"></i>
+                          </button>
+                      </div>
+                      <div class="col-md-8 text-right my-auto ">
+                          <button class="btn btn-outline-light">
+                              <img src="/assets/img/avatar/1.jpg" class="rounded-circle" alt=""
+                                  style="width: 50px; margin:2px;">
+                              <span class="page-title" style="color: white;">Indonesia Maju</span>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </nav>
+
+      <nav class="navbar navbar-expand-md navbar-light pt-5">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto mr-auto py-4 py-md-0">
+                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                      <a class="nav-link well" href="#"><img src="/assets/img/icon/home.svg" class="mr-2"
+                              alt="">Dashboard</a>
+                  </li>
+                  <li class="nav-item dropdown pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link dropdown-toggle well" href="#" id="navbarDropdown" role="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <img src="/assets/img/icon/analyze.svg" class="mr-2" alt="">Analyzer
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Topic Compare</a>
+                          <a class="dropdown-item" href="#">Topic Relation</a>
+                  </li>
+                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link well" href="search.html"><img src="/assets/img/icon/search.svg" class="mr-2"
+                              alt="">Search</a>
+                  </li>
+                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link well" href="#"><img src="/assets/img/icon/settings.svg" class="mr-2"
+                              alt="">Settings</a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+  </section>
+  <!-- End Nav -->
+
+    <section style="margin-top: -10%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-uppercase font-weight-bold mt-2 mb-4">Detail Account</h4>
+                            <hr>
+                           <div style="margin: auto; max-width: 1000px;">
+                                <div class="row well pb-4   pt-4">
+                                        <div class="col-md-4 pr-3">
+                                            <img src="/assets/img/user_gede.png" style="width:100%" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row mb-3">
+                                                <div class="col-md-5"><h3>Nama</h3></div>
+                                                <div class="col-md-7"><h3>: Fadel Nuariko</h3></div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-5"><h3>Lates Location</h3></div>
+                                                <div class="col-md-7"><h3>: -</h3></div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-5"><h3>Total Chats</h3></div>
+                                                <div class="col-md-7"><h3>: 203</h3></div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-5"><h3>Total Groups</h3></div>
+                                                <div class="col-md-7"><h3>: 12</h3></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body ">
+                                    <div class="well "><span class="badge badge-pill bg-theme mr-3" style="width: 30px; height: 10px;">
+                                        </span>
+                                        <h5 class="card-title font-weight-bold text-theme " style="margin:0;">Groups</h5>
+                                      </div>
+                                      <hr>
+                                      <div class="table-responsive" style="height: 600px; margin-top:30px">
+                                            <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                                    <div class="col-md-2">
+                                                      <img src="/assets/img/user_gede.png" class="img-thumbnail mr-3" alt=""
+                                                        style="width: 100px; margin:2px;">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                      <h4 class="font-weight-bold mb-2" style="margin:0;">Indonesia Jaya</h4>
+                                                      <h6>Creator : +62794747489</h6>
+                                                      <br>
+                                                      <p class="text-justify" style="font-size:12px;">
+                                                       16 Days Ago (Fri 20 Feb 2019, 10:20:29 GMT +7 WIB)
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+                                            <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                                    <div class="col-md-2">
+                                                      <img src="/assets/img/user_gede.png" class="img-thumbnail mr-3" alt=""
+                                                        style="width: 100px; margin:2px;">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                      <h4 class="font-weight-bold mb-2" style="margin:0;">Indonesia Jaya</h4>
+                                                      <h6>Creator : +62794747489</h6>
+                                                      <br>
+                                                      <p class="text-justify" style="font-size:12px;">
+                                                       16 Days Ago (Fri 20 Feb 2019, 10:20:29 GMT +7 WIB)
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+                                            <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                                    <div class="col-md-2">
+                                                      <img src="/assets/img/user_gede.png" class="img-thumbnail mr-3" alt=""
+                                                        style="width: 100px; margin:2px;">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                      <h4 class="font-weight-bold mb-2" style="margin:0;">Indonesia Jaya</h4>
+                                                      <h6>Creator : +62794747489</h6>
+                                                      <br>
+                                                      <p class="text-justify" style="font-size:12px;">
+                                                       16 Days Ago (Fri 20 Feb 2019, 10:20:29 GMT +7 WIB)
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+                                            <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                                    <div class="col-md-2">
+                                                      <img src="/assets/img/user_gede.png" class="img-thumbnail mr-3" alt=""
+                                                        style="width: 100px; margin:2px;">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                      <h4 class="font-weight-bold mb-2" style="margin:0;">Indonesia Jaya</h4>
+                                                      <h6>Creator : +62794747489</h6>
+                                                      <br>
+                                                      <p class="text-justify" style="font-size:12px;">
+                                                       16 Days Ago (Fri 20 Feb 2019, 10:20:29 GMT +7 WIB)
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+                                            <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                                    <div class="col-md-2">
+                                                      <img src="/assets/img/user_gede.png" class="img-thumbnail mr-3" alt=""
+                                                        style="width: 100px; margin:2px;">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                      <h4 class="font-weight-bold mb-2" style="margin:0;">Indonesia Jaya</h4>
+                                                      <h6>Creator : +62794747489</h6>
+                                                      <br>
+                                                      <p class="text-justify" style="font-size:12px;">
+                                                       16 Days Ago (Fri 20 Feb 2019, 10:20:29 GMT +7 WIB)
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+                                            <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                                    <div class="col-md-2">
+                                                      <img src="/assets/img/user_gede.png" class="img-thumbnail mr-3" alt=""
+                                                        style="width: 100px; margin:2px;">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                      <h4 class="font-weight-bold mb-2" style="margin:0;">Indonesia Jaya</h4>
+                                                      <h6>Creator : +62794747489</h6>
+                                                      <br>
+                                                      <p class="text-justify" style="font-size:12px;">
+                                                       16 Days Ago (Fri 20 Feb 2019, 10:20:29 GMT +7 WIB)
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <hr>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                    <div class="well "><span class="badge badge-pill bg-theme mr-3" style="width: 30px; height: 10px;">
+                                        </span>
+                                        <h5 class="card-title font-weight-bold text-theme " style="margin:0;">Relation List</h5>
+                                      </div>
+                                      <hr>
+                                      <div style="height: 600px; margin-top:30px" class="table-responsive">
+                                      <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                              <div class="col-md-2">
+                                                <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                                                  style="width: 97px; margin:2px;">
+                                              </div>
+                                              <div class="col-md-10">
+                                                <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                                                <small class="text-secondary">02 November 2019, 19:33:20</small>
+                                                <br>
+                                                <p class="text-justify mt-2" style="font-size:12px;">
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                                                  consectetur
+                                                  quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                                                  sed.
+                                                  Placeat, nostrum asperiores. Soluta!
+                                                </p>
+                                              </div>
+                                            </div>
+                                            <hr>
+                                      <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                              <div class="col-md-2">
+                                                <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                                                  style="width: 97px; margin:2px;">
+                                              </div>
+                                              <div class="col-md-10">
+                                                <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                                                <small class="text-secondary">02 November 2019, 19:33:20</small>
+                                                <br>
+                                                <p class="text-justify mt-2" style="font-size:12px;">
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                                                  consectetur
+                                                  quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                                                  sed.
+                                                  Placeat, nostrum asperiores. Soluta!
+                                                </p>
+                                              </div>
+                                            </div>
+                                            <hr>
+                                      <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                              <div class="col-md-2">
+                                                <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                                                  style="width: 97px; margin:2px;">
+                                              </div>
+                                              <div class="col-md-10">
+                                                <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                                                <small class="text-secondary">02 November 2019, 19:33:20</small>
+                                                <br>
+                                                <p class="text-justify mt-2" style="font-size:12px;">
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                                                  consectetur
+                                                  quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                                                  sed.
+                                                  Placeat, nostrum asperiores. Soluta!
+                                                </p>
+                                              </div>
+                                            </div>
+                                            <hr>
+                                      <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                              <div class="col-md-2">
+                                                <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                                                  style="width: 97px; margin:2px;">
+                                              </div>
+                                              <div class="col-md-10">
+                                                <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                                                <small class="text-secondary">02 November 2019, 19:33:20</small>
+                                                <br>
+                                                <p class="text-justify mt-2" style="font-size:12px;">
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                                                  consectetur
+                                                  quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                                                  sed.
+                                                  Placeat, nostrum asperiores. Soluta!
+                                                </p>
+                                              </div>
+                                            </div>
+                                            <hr>
+                                      <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                              <div class="col-md-2">
+                                                <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                                                  style="width: 97px; margin:2px;">
+                                              </div>
+                                              <div class="col-md-10">
+                                                <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                                                <small class="text-secondary">02 November 2019, 19:33:20</small>
+                                                <br>
+                                                <p class="text-justify mt-2" style="font-size:12px;">
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                                                  consectetur
+                                                  quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                                                  sed.
+                                                  Placeat, nostrum asperiores. Soluta!
+                                                </p>
+                                              </div>
+                                            </div>
+                                            <hr>
+                                      <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                                              <div class="col-md-2">
+                                                <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                                                  style="width: 97px; margin:2px;">
+                                              </div>
+                                              <div class="col-md-10">
+                                                <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                                                <small class="text-secondary">02 November 2019, 19:33:20</small>
+                                                <br>
+                                                <p class="text-justify mt-2" style="font-size:12px;">
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                                                  consectetur
+                                                  quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                                                  sed.
+                                                  Placeat, nostrum asperiores. Soluta!
+                                                </p>
+                                              </div>
+                                            </div>
+                                            <hr>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-uppercase font-weight-bold mt-2 mb-4">Outgoing Chat</h4>
+                            <hr>
+                            <div id="chart1" style="height: 420px; margin-top:30px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="well "><h4><span class="badge positive pt-3 pb-3 pl-4 pr-4 text-uppercase">positive</span></h4>
+                      </div>
+                      <hr>
+                      <div class="table-responsive" style="height: 435px;">
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="well "><h4><span class="badge neutral pt-3 pb-3 pl-4 pr-4 text-uppercase">neutral</span></h4>
+                      </div>
+                      <hr>
+                      <div class="table-responsive" style="height: 435px;">
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="well ">
+                          <h4><span class="badge negative pt-3 pb-3 pl-4 pr-4 text-uppercase">Negative</span></h4>
+                        </button>
+                      </div>
+                      <hr>
+                      <div class="table-responsive" style="height: 435px;">
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3 mr-2 ml-2 pt-3 bg-light" style="border-radius:10px;">
+                          <div class="col-md-3">
+                            <img src="/assets/img/avatar/1.jpg" class="img-thumbnail mr-3" alt=""
+                              style="width: 97px; margin:2px;">
+                          </div>
+                          <div class="col-md-9">
+                            <h6 class="font-weight-bold" style="margin:0;">0812345678x</h6>
+                            <small class="text-secondary">02 November 2019, 19:33:20</small>
+                            <br>
+                            <p class="text-justify mt-2" style="font-size:12px;">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium placeat
+                              consectetur
+                              quam sunt amet consequuntur debitis error ab, perferendis inventore mollitia nisi tempora quo
+                              sed.
+                              Placeat, nostrum asperiores. Soluta!
+                            </p>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="text-uppercase font-weight-bold mt-2 mb-4">Relation Network</h4>
+                                    <hr>
+                                    <div class="table-responsive" style="height: 500px; margin-top:30px">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="text-uppercase font-weight-bold mt-2 mb-4">Image Gallery</h4>
+                                    <hr>
+                                    <div class="table-responsive" style="height: 500px; margin-top:30px">
+                                    <section id="photos"></section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    <!-- End nav -->
+
+    <!-- Javascript Library -->
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap-material-design.js"></script>
+    <script src="assets/vendors/highcharts/highcharts.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            Highcharts.chart('chart1', {
+        title: false,
+        chart: {
+            type: 'areaspline',
+            backgroundColor:'#FFFFFF'
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+
+        plotOptions: {
+            series: {
+                marker: {
+                    fillColor: '#FFFFFF',
+                    lineWidth: 3,
+                    lineColor: null,
+                    symbol: 'circle'
+                }
+            }
+        },
+
+        series: [{
+            color: '#00e9ff',
+            data: [29.9, 71.5, 106.4, 129.2, 70.0, 60.0, 90.6, 148.5, 130.4, 150.1, 95.6, 54.4],
+            fillColor: {
+                linearGradient: [0, 0, 0, 300],
+                stops : [
+                    [0, Highcharts.Color('#00e9ff').setOpacity(1).get('rgba')],
+                    [1, Highcharts.Color('#FAFAFA').setOpacity(0).get('rgba')],
+                ]
+            }
+        }
+    ]
+    });
+
+    function getRandomSize(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+        }
+
+        var allImages = "";
+
+        for (var i = 0; i < 25; i++) {
+        var width = getRandomSize(400, 600);
+        var height =  getRandomSize(300, 600);
+        allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
+        }
+
+        $('#photos').append(allImages);
+
+    
+        });
+    </script>
+</body>
+
+</html>

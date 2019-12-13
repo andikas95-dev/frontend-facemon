@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="354" height="38" viewBox="0 0 354 38">
+  <g id="Group_553" data-name="Group 553" transform="translate(-330 -52)">
+    <text id="Facebook" transform="translate(330 80)" fill="#fff" font-size="30" font-family="NexaBold, Nexa"><tspan x="0" y="0">Facebook</tspan></text>
+    <text id="Monitoring" transform="translate(532 80)" fill="#fff" font-size="30" font-family="NexaBold, Nexa"><tspan x="0" y="0">Monitoring</tspan></text>
+    <rect id="Rectangle_1719" data-name="Rectangle 1719" width="36" height="36" rx="6" transform="translate(482 52)" fill="#fff"/>
+    <path id="Path_656" data-name="Path 656" d="M35.309.005,32.011,0c-3.705,0-6.1,2.457-6.1,6.259V9.145H22.6a.519.519,0,0,0-.519.519v4.181a.519.519,0,0,0,.519.519h3.316V24.914a.518.518,0,0,0,.519.519h4.326a.519.519,0,0,0,.519-.519V14.364h3.877a.518.518,0,0,0,.519-.519l0-4.181a.519.519,0,0,0-.519-.519H31.275V6.7c0-1.176.28-1.773,1.812-1.773h2.222a.519.519,0,0,0,.518-.519V.524A.519.519,0,0,0,35.309.005Z" transform="translate(470.525 57.674)" fill="#3b5998"/>
+  </g>
+</svg>

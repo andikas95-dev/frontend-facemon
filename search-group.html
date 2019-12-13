@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.css">
+
+  <!-- Material Design for Bootstrap fonts and icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Material Design for Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/vendors/datepicker/daterangepicker.css">
+
+  <title>Whatsapp Monitoring</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <section style="background-color: #3B5998; height: 400px; width: 100%">
+    <nav class="navbar navbar-expand-lg static-top pt-5">
+      <div class="container">
+        <div class="row" style="margin-left: 0px;">
+          <!-- today group -->
+          <div class="group-count well">
+            <h1 class="number-count">46</h1><span class="caption-number">TODAY GROUP</span>
+          </div>
+
+          <!-- logged account -->
+          <div class="group-count well">
+            <h1 class="number-count">16</h1><span class="caption-number">LOGGED ACCOUNT</span>
+          </div>
+
+          <!-- today topic -->
+          <div class="group-count well">
+            <h1 class="number-count">86</h1><span class="caption-number">TODAY TOPIC</span>
+          </div>
+        </div>
+
+
+        <!-- logo -->
+        <a class="navbar-brand mx-auto" href="#">
+          <img src="assets/img/logo.svg" height="28px" alt="">
+        </a>
+
+        <div>
+          <!-- <div class="group-count well account" role="button" style="margin-right: 0;" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="mr-3"><span style="font-weight: bold;">ADMIN </span></div><img height="40"
+                src="assets/img/user.png" alt="">
+  
+            </div>
+            <div class="dropdown-menu fix-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Sign Out</a>
+            </div> -->
+          <div class="row">
+            <div class="col-md-2 text-center my-auto">
+              <button class="btn btn-outline-light">
+                <i class="fas fa-bell" style="color: white; font-size: 20px; position: absolute;"></i>
+                <span class="badge badge-pill badge-warning"
+                  style="font-size: 10px; margin-left: 10px; z-index: 1; position: relative;">1</span>
+              </button>
+            </div>
+            <div class="col-md-2 text-center my-auto">
+              <button class="btn btn-outline-light">
+                <i class="far fa-question-circle" style="color: white; font-size: 22px;"></i>
+              </button>
+            </div>
+            <div class="col-md-8 text-right my-auto ">
+              <button class="btn btn-outline-light">
+                <img src="/assets/img/avatar/1.jpg" class="rounded-circle" alt="" style="width: 50px; margin:2px;">
+                <span class="page-title" style="color: white;">Indonesia Maju</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-md navbar-light pt-5">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mr-auto py-4 py-md-0">
+          <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+            <a class="nav-link well" href="#"><img src="/assets/img/icon/home.svg" class="mr-2" alt="">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown pl-4 pl-md-0 ml-0 ml-md-4">
+            <a class="nav-link dropdown-toggle well" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="/assets/img/icon/analyze.svg" class="mr-2" alt="">Analyzer
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Topic Compare</a>
+              <a class="dropdown-item" href="#">Topic Relation</a>
+          </li>
+          <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+            <a class="nav-link well" href="search.html"><img src="/assets/img/icon/search.svg" class="mr-2"
+                alt="">Search</a>
+          </li>
+          <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+            <a class="nav-link well" href="#"><img src="/assets/img/icon/settings.svg" class="mr-2" alt="">Settings</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <!-- End Nav -->
+
+  <section style="margin-top: -10%;">
+    <div class="container" style="margin-top: -10%;">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <!-- <h4 class="text-uppercase font-weight-bold mt-2 mb-4">Search</h4>
+              <hr>
+
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <h5>Keyword</h5>
+                  <input type="text" class="search_input" id="2" placeholder="Enter Keyword ..">
+                </div>
+              </div>
+
+              <div class="row  mb-3">
+                <div class="col-md-12">
+                  <h5>Date</h5>
+                  <input type="text" class="search_input datepicker" id="3" placeholder="Select Date">
+                </div>
+              </div>
+
+              <div class="row  mb-3">
+                <div class="col-md-12">
+                  <h5>Sentiment</h5>
+                  <select name="" class="search_input " id="">
+                    <option style="padding:20px !important;" value="">Positive</option>
+                    <option class="p-3" value="">Netral</option>
+                    <option class="p-3" value="">Negative</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row  mb-3">
+                <div class="col-md-12">
+                  <h5>Phone Number</h5>
+                  <input type="text" class="search_input" id="4" placeholder="0812345678XX">
+                </div>
+              </div> -->
+
+
+              <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist">
+                <li class="nav-item profile-style">
+                  <a class="nav-link profile-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab"
+                    aria-controls="home-md" aria-selected="true">Chat</a>
+                </li>
+                <li class="nav-item profile-style">
+                  <a class="nav-link profile-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab"
+                    aria-controls="profile-md" aria-selected="false">Group</a>
+                </li>
+                <li class="nav-item profile-style">
+                  <a class="nav-link profile-link" id="profile-tab-md" data-toggle="tab" href="#account-name" role="tab"
+                    aria-controls="account-name" aria-selected="false">Account Name</a>
+                </li>
+              </ul>
+              <div class="tab-content card no-shadow" id="myTabContentMD">
+                <div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
+                  <div class="row mb-3">
+                    <div class="col-md-12 mt-3">
+                      <h5>Keyword</h5>
+                      <input type="text" class="search_input" id="2" placeholder="Enter Keyword ..">
+                    </div>
+                  </div>
+
+                  <div class="row  mb-3">
+                    <div class="col-md-12">
+                      <h5>Date</h5>
+                      <input type="text" class="search_input datepicker" id="3" placeholder="Select Date">
+                    </div>
+                  </div>
+
+                  <div class="row  mb-3">
+                    <div class="col-md-12">
+                      <h5>Sentiment</h5>
+                      <select name="" class="search_input " id="">
+                        <option style="padding:20px !important;" value="">Positive</option>
+                        <option class="p-3" value="">Netral</option>
+                        <option class="p-3" value="">Negative</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row  mb-3">
+                    <div class="col-md-12">
+                      <h5>Phone Number</h5>
+                      <input type="text" class="search_input" id="4" placeholder="0812345678XX">
+                    </div>
+                  </div>
+
+                  <div class="row  mb-3">
+                    <div class="col-md-12">
+                      <a name="" id="" class="btn positive-blue btn-raised float-right" href="#"
+                        role="button">Search</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
+                  <div class="row mb-3">
+                    <div class="col-md-12 mt-3">
+                      <h5>Group</h5>
+                      <input type="text" class="search_input" id="2" placeholder="Enter Keyword ..">
+                    </div>
+                  </div>
+
+                  <div class="row  mb-3">
+                    <div class="col-md-12">
+                      <h5>Phone Number</h5>
+                      <input type="text" class="search_input" id="4" placeholder="0812345678XX">
+                    </div>
+                  </div>
+
+                  <div class="row  mb-3">
+                    <div class="col-md-12">
+                      <a name="" id="" class="btn positive-blue btn-raised float-right" href="#"
+                        role="button">Search</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="account-name" role="tabpanel" aria-labelledby="profile-tab-md">
+
+                  <div class="row  my-3">
+                    <div class="col-md-12">
+                      <h5>Phone Number</h5>
+                      <input type="text" class="search_input" id="4" placeholder="enter phone pattern...  ">
+                    </div>
+                  </div>
+
+                  <div class="row  mb-3">
+                    <div class="col-md-12">
+                      <a name="" id="" class="btn positive-blue btn-raised float-right" href="#"
+                        role="button">Search</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-6 mt-3">
+                  <h4 class="text-uppercase font-weight-bold">Search Result</h4>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <button class="btn btn-flat btn-lg float-right text-capitalize ">
+                    <i class="fas fa-print"></i>
+                    Export PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body table-responsive" style="height:75vh">
+              <div class="row">
+
+                <div class="col-md-4 text-center">
+                  <img src="/assets/img/avatar/3.jpg" height="100" class="img-thumbnail rounded-circle mt-2 mb-1"
+                    style="width: 20vh; margin:2px;" alt="">
+                  <h3 class="text-uppercase font-weight-bold text-positive mt-3">2019 jkw-ma riau</h3>
+                  <h5 class="font-weight-bold">Creator : +6281388888888</h5>
+                  <span>20 januari 2019</span>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <img src="/assets/img/avatar/3.jpg" height="100" class="img-thumbnail rounded-circle mt-2 mb-1"
+                    style="width: 20vh; margin:2px;" alt="">
+                  <h3 class="text-uppercase font-weight-bold text-positive mt-3">2019 jkw-ma riau</h3>
+                  <h5 class="font-weight-bold">Creator : +6281388888888</h5>
+                  <span>20 januari 2019</span>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <img src="/assets/img/avatar/3.jpg" height="100" class="img-thumbnail rounded-circle mt-2 mb-1"
+                    style="width: 20vh; margin:2px;" alt="">
+                  <h3 class="text-uppercase font-weight-bold text-positive mt-3">2019 jkw-ma riau</h3>
+                  <h5 class="font-weight-bold">Creator : +6281388888888</h5>
+                  <span>20 januari 2019</span>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <img src="/assets/img/avatar/3.jpg" height="100" class="img-thumbnail rounded-circle mt-2 mb-1"
+                    style="width: 20vh; margin:2px;" alt="">
+                  <h3 class="text-uppercase font-weight-bold text-positive mt-3">2019 jkw-ma riau</h3>
+                  <h5 class="font-weight-bold">Creator : +6281388888888</h5>
+                  <span>20 januari 2019</span>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <img src="/assets/img/avatar/3.jpg" height="100" class="img-thumbnail rounded-circle mt-2 mb-1"
+                    style="width: 20vh; margin:2px;" alt="">
+                  <h3 class="text-uppercase font-weight-bold text-positive mt-3">2019 jkw-ma riau</h3>
+                  <h5 class="font-weight-bold">Creator : +6281388888888</h5>
+                  <span>20 januari 2019</span>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <img src="/assets/img/avatar/3.jpg" height="100" class="img-thumbnail rounded-circle mt-2 mb-1"
+                    style="width: 20vh; margin:2px;" alt="">
+                  <h3 class="text-uppercase font-weight-bold text-positive mt-3">2019 jkw-ma riau</h3>
+                  <h5 class="font-weight-bold">Creator : +6281388888888</h5>
+                  <span>20 januari 2019</span>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <img src="/assets/img/avatar/3.jpg" height="100" class="img-thumbnail rounded-circle mt-2 mb-1"
+                    style="width: 20vh; margin:2px;" alt="">
+                  <h3 class="text-uppercase font-weight-bold text-positive mt-3">2019 jkw-ma riau</h3>
+                  <h5 class="font-weight-bold">Creator : +6281388888888</h5>
+                  <span>20 januari 2019</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End nav -->
+
+  <!-- Javascript Library -->
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap-material-design.js"></script>
+  <script src="assets/vendors/highcharts/highcharts.js"></script>
+  <script src="assets/vendors/datepicker/moment-with-locales.min.js"></script>
+  <script src="assets/vendors/datepicker/daterangepicker.min.js"></script>
+  <script src="assets/js/custom_datepick.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('body').bootstrapMaterialDesign();
+    });
+  </script>
+</body>
+
+</html>
